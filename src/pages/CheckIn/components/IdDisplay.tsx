@@ -1,11 +1,7 @@
-import "./IdDisplay.scss"
+import "./IdDisplay.scss";
 
-const IdDisplay = ({id}: {id:string}) => {
-  return (
-    <div className="id-display">
-      {id}
-    </div>
-  )
-}
+const IdDisplay = ({ id }: { id: string }) => {
+  return <div className="id-display">{id}</div>;
+};
 
-export default IdDisplay
+export default IdDisplay;

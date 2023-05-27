@@ -4,7 +4,7 @@ import "./Admin.scss";
 function Admin() {
   return (
     <>
-        admin
+      admin
       {/* <Grid
         className="admin-wrapper"
         container
@@ -18,7 +18,7 @@ function Admin() {
         <Grid item xs={12} className="admin-page">
           <div className="width-container">admin page</div>
         </Grid>
-      </Grid> */}
+  </Grid> */}
     </>
   );
 }

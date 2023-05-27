@@ -1,22 +1,22 @@
-import { useState } from "react"
-import Numpad, { NumpadButton } from "./components/Numpad"
-import "./CheckIn.scss"
-import IdDisplay from "./components/IdDisplay"
+import { useState } from "react";
+import Numpad, { NumpadButton } from "./components/Numpad";
+import "./CheckIn.scss";
+import IdDisplay from "./components/IdDisplay";
 
 const CheckIn = () => {
-const [idNum, setIdNum] = useState<string>("")
+  const [idNum, setIdNum] = useState<string>("");
 
-const numpadChangeHandler = ({button}: {button: NumpadButton}) => {
-      if (button === "CLEAR") {
-        setIdNum("");
-        return;
-      }
-      if (button === "BACKSPACE") {
-        setIdNum(idNum.slice(0, idNum.length - 1));
-        return;
-      }
-      if (idNum.length < 9) setIdNum(idNum + button);
-}
+  const numpadChangeHandler = ({ button }: { button: NumpadButton }) => {
+    if (button === "CLEAR") {
+      setIdNum("");
+      return;
+    }
+    if (button === "BACKSPACE") {
+      setIdNum(idNum.slice(0, idNum.length - 1));
+      return;
+    }
+    if (idNum.length < 9) setIdNum(idNum + button);
+  };
 
   return (
     <div className="check-in">
@@ -38,7 +38,7 @@ const numpadChangeHandler = ({button}: {button: NumpadButton}) => {
         <div className="submit-button"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CheckIn
+export default CheckIn;
