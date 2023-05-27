@@ -1,7 +1,9 @@
 .numpad-btn {
+    cursor: pointer;
+
     width: 100px;
     height: 100px;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,4 +14,9 @@
     background-color: #D7E9FF;
     border: solid 3px #1A1F49;
     border-radius: 18px;
+    transition: all ease-in-out 100ms;
+
+    &:active {
+        transform: scale(0.95);
+    }
 }
