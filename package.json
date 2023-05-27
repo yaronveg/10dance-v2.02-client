@@ -1,7 +1,7 @@
 {
   "name": "10dance-v2-client",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.02",
   "type": "module",
   "scripts": {
     "dev": "vite",
