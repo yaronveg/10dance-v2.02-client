@@ -5,16 +5,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: -70px;
+    background: linear-gradient(180deg, #93C1FF 0%, #75D6FF 100%);
 
     .container {
         max-width: 1000px;
+    }
+    .title {
+        margin-bottom: 24px;
+        &-introducing {
+            font-size: 18px;
+        }
+        &-main {
+            font-size: 44px;
+        }
     }
     .numpad-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        .id-info {
+            font-size: 36px;
+            margin-bottom: 18px;
+        }
         .id-display-wrapper {
             margin-bottom: 30px;
         }

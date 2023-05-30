@@ -29,6 +29,7 @@ const Numpad = ({
   return (
     <div className="numpad">
       {NumpadButtons.map((btn: NumpadButton) => {
+        // TODO: if clear or backspace, use Font Awesome
         return (
           <NumpadBtn key={btn} button={btn} onClick={() => clickHandler(btn)} />
         );

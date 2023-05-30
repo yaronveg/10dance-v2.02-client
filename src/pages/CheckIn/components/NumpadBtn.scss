@@ -9,12 +9,11 @@
     align-items: center;
 
     font-size: 48px;
-    color: #1A1F49;
 
     background-color: #D7E9FF;
     border: solid 3px #1A1F49;
     border-radius: 18px;
-    transition: all ease-in-out 100ms;
+    transition: all ease-in-out 80ms;
 
     &:active {
         transform: scale(0.95);

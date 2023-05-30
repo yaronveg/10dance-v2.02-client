@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <main>
+        <main className="color-text-primary">
           <Routes>{routes}</Routes>
         </main>
       </Router>
