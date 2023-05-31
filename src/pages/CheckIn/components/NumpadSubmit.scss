@@ -1,7 +1,7 @@
-.numpad-btn {
+.numpad-submit {
     cursor: pointer;
 
-    width: 100px;
+    width: 324px;
     height: 100px;
 
     display: flex;
@@ -10,17 +10,12 @@
 
     font-size: 48px;
 
-    background-color: #D7E9FF;
+    background-color: #1CC78B;
     border: solid 3px #1A1F49;
-    border-radius: 18px;
+    border-radius: 11px;
     transition: all ease-in-out 80ms;
 
     &:active {
-        transform: scale(0.95);
-        background-color: #1A1F49;
-        color: #D7E9FF;
-    }
-    &.icon-size {
-        font-size: 32px;
+        transform: scale(0.98);
     }
 }

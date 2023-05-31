@@ -14,15 +14,21 @@ const NumpadBtn = ({
   const [buttonLabel, setButtonLabel] = useState<NumpadButton | JSX.Element>(
     button
   );
+  const [classList, setClassList] = useState("numpad-btn");
 
   useEffect(() => {
-    if (button === "CLEAR") setButtonLabel(<FontAwesomeIcon icon={faTrash} />);
-    if (button === "BACKSPACE")
+    if (button === "CLEAR") {
+      setButtonLabel(<FontAwesomeIcon icon={faTrash} />);
+      setClassList(`${classList} icon-size`);
+    }
+    if (button === "BACKSPACE") {
       setButtonLabel(<FontAwesomeIcon icon={faChevronLeft} />);
+      setClassList(`${classList} icon-size`);
+    }
   }, []);
 
   return (
-    <button className="numpad-btn" onClick={() => onClick(button)}>
+    <button className={classList} onClick={() => onClick(button)}>
       {buttonLabel}
     </button>
   );

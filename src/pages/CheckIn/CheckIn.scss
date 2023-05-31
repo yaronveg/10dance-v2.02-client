@@ -10,6 +10,24 @@
     .container {
         max-width: 1000px;
     }
+
+    .floating-logos {
+        position: fixed;
+        justify-content: space-between;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        padding: 0 20px;
+        
+        .logo-10dance {
+            width: 220px
+        }
+        .logo-huji {
+            margin-right: -35px;
+            width: 111px;
+        }
+    }
     .title {
         margin-bottom: 24px;
         &-introducing {
