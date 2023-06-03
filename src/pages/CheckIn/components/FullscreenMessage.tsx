@@ -23,7 +23,7 @@ const FullscreenMessage = ({
   };
 
   return (
-    <div className="fullscreen-message" onClick={onClick}>
+    <div className="fullscreen-message rtl" onClick={onClick}>
       {title && <div className="title">{title}</div>}
       {icon && <FontAwesomeIcon className={classList()} icon={icon} />}
       {subtitle && <div className="subtitle">{subtitle}</div>}
