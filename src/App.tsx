@@ -12,6 +12,7 @@ function App() {
     <>
       <Route path="/" element={<CheckIn />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/print" element={<PrintPage />} />
       <Route path="*" element={<Navigate replace to="/" />} />
     </>
   );

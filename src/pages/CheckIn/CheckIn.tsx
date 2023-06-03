@@ -5,7 +5,7 @@ import IdDisplay from "./components/IdDisplay";
 import logo10Dance from "../../common/assets/10dance_logo.svg";
 import logoHuji from "../../common/assets/huji_logo.png";
 import NumpadSubmit from "./components/NumpadSubmit";
-import { checkInGuest } from "./api/check-in";
+import { checkInAttendee } from "./api/check-in";
 import { validateId } from "./utils";
 import { Backdrop } from "../../common/components";
 import FullscreenMessage, {
@@ -16,12 +16,15 @@ import {
   faHeartCrack,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router";
 
 const CheckIn = () => {
   const [idNum, setIdNum] = useState<string>("");
   const [showBackdrop, setShowBackdrop] = useState(false);
   const [fullscreenMessage, setFullscreenMessage] =
     useState<null | IFullscreenMessage>(null);
+
+  const navigate = useNavigate();
 
   const numpadChangeHandler = ({ button }: { button: NumpadButton }) => {
     if (button === "CLEAR") {
@@ -37,14 +40,22 @@ const CheckIn = () => {
 
   const submitHandler = async () => {
     setShowBackdrop(true);
+
+    if (!idNum) {
+      setFullscreenMessage({
+        title: "אנא הזינו ת.ז.",
+      });
+      return;
+    }
     setFullscreenMessage({
       title: "רק רגע...",
       icon: faSpinner,
     });
     try {
       const validId = await validateId(idNum);
-      const res = await checkInGuest(validId);
+      const res = await checkInAttendee(validId);
       if (!res.ok) throw new Error(res.statusText);
+      navigate("/print", { state: { id: idNum, postPrintURL: "/" } });
       setFullscreenMessage({
         title: "נרשמת בהצלחה",
         icon: faCheckToSlot,
