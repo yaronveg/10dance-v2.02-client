@@ -10,12 +10,14 @@
 
     font-size: 48px;
 
-    background-color: #1CC78B;
+    background-color: #1A1F49;
+    color: #fefefe;
     border: solid 3px #1A1F49;
     border-radius: 11px;
     transition: all ease-in-out 80ms;
 
     &:active {
         transform: scale(0.98);
+        background-color: #323a7e;
     }
 }
