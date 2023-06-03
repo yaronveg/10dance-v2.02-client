@@ -5,7 +5,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
 }
 main {
   height: 100vh;
@@ -18,4 +17,7 @@ main {
     width: 100%;
     text-align: center;
 
+  }
+  .rtl {
+    direction: rtl;
   }
