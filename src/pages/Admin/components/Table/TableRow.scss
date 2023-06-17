@@ -1,0 +1,13 @@
+.table-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 8px 10px;
+    &:hover {
+        background: #2A3D43;
+        color: #FFFFFF;
+    }
+    .isArrived {
+        padding-right: 14px;
+        font-size: 22px;
+    }
+}
