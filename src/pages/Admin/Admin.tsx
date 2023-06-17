@@ -7,9 +7,7 @@ function Admin() {
       <div className="flex-none">
         <Header />
       </div>
-      <div className="flex-1 admin-page">
-        <div className="width-container">page</div>
-      </div>
+      <div className="flex-1 main width-container"></div>
     </div>
   );
 }

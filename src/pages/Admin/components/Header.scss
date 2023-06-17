@@ -30,5 +30,13 @@
                 }
             }
         }
+        .logos {
+            display: flex;
+            gap: 10px;
+            .huji-logo {
+                background: #ffffff;
+                border-radius: 4px;
+            }
+        }
     }
 }

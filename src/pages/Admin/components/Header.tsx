@@ -11,8 +11,8 @@ const Header = () => {
           <div className="btn">קבלת פנים</div>
         </div>
         <div className="logos">
+          <img className="huji-logo" src={logoHuji} width="52px" alt="" />
           <img src={logo10Dance} width="160px" alt="" />
-          <img src={logoHuji} width="60px" alt="" />
         </div>
       </div>
     </div>

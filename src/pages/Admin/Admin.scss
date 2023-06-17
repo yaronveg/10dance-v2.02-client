@@ -1,4 +1,5 @@
 .admin-wrapper {
+  background-color: #2a3d43;
     height: 100%;
     color: #ffffff;
     display: flex;
@@ -6,11 +7,8 @@
     .flex-none {
       flex: 0;
     }
-    .admin-page {
-      background-color: #2a3d43;
-      &.flex-1 {
-        flex: 1
-      }
+    .flex-1 {
+      flex: 1
     }
     .width-container {
       width: 100%;
