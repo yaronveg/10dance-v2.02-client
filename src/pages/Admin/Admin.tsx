@@ -2,7 +2,7 @@ import "./Admin.scss";
 import { Attendee } from "../../common/types/types";
 import Header from "./components/Header";
 import Table from "./components/Table/Table";
-import { useState, useCallback, useEffect, ChangeEvent } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { getAllAttendees } from "../../common/api/attendee";
 
 function Admin() {
@@ -36,9 +36,7 @@ function Admin() {
     };
     initRows();
   }, []);
-  const handleInputChange = (e: any) => {
-    console.log({ e });
-
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     if (!e.target.value) {
       setVisibleRows(allAttendees);
       return;
