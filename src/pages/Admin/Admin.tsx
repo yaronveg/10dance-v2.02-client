@@ -2,7 +2,7 @@ import "./Admin.scss";
 import { Attendee } from "../../common/types/types";
 import Header from "./components/Header";
 import Table from "./components/Table/Table";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, ChangeEvent } from "react";
 import { getAllAttendees } from "../../common/api/attendee";
 
 function Admin() {
@@ -36,7 +36,16 @@ function Admin() {
     };
     initRows();
   }, []);
+  const handleInputChange = (e: any) => {
+    console.log({ e });
 
+    if (!e.target.value) {
+      setVisibleRows(allAttendees);
+      return;
+    }
+    setSearchTerm(e.target.value);
+    setVisibleRows(searchRows(allAttendees));
+  };
   return (
     <div className="admin-wrapper">
       <div className="flex-none">
@@ -44,7 +53,8 @@ function Admin() {
       </div>
       <div className="flex-1 main width-container">
         {/* table control - props: {visibleRows: attendee[]} onSearch, onAddedAtendee } */}
-        {<Table rows={visibleRows} />}
+        <input type="text" onChange={handleInputChange} />
+        <Table rows={visibleRows} />
       </div>
     </div>
   );
