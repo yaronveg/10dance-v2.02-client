@@ -1,0 +1,34 @@
+.header {
+    display: flex;
+        align-items: center;
+    background: #1B272B;
+    height: 80px;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1086px;
+        width: 100%;
+        margin: 0 auto;
+        .actions {
+            display:flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+
+            .btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #E1EEF8;
+                color: #09536A;
+                border-radius: 4px;
+                min-width: 105px;
+                height: 26px;
+                &:active {
+                    scale: 0.98;
+                }
+            }
+        }
+    }
+}

@@ -1,25 +1,16 @@
 import "./Admin.scss";
-// import { Grid } from "@mui/material";
+import Header from "./components/Header";
 
 function Admin() {
   return (
-    <>
-      admin
-      {/* <Grid
-        className="admin-wrapper"
-        container
-        direction="column"
-        wrap="nowrap"
-      >
-        <Grid item className="admin-header">
-          <div className="width-container">admin header</div>
-        </Grid>
-
-        <Grid item xs={12} className="admin-page">
-          <div className="width-container">admin page</div>
-        </Grid>
-  </Grid> */}
-    </>
+    <div className="admin-wrapper">
+      <div className="flex-none">
+        <Header />
+      </div>
+      <div className="flex-1 admin-page">
+        <div className="width-container">page</div>
+      </div>
+    </div>
   );
 }
 
