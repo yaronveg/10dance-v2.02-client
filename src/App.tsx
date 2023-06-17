@@ -5,7 +5,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { CheckIn, Admin } from "./pages";
+import { CheckIn, Admin, PrintPage } from "./pages";
 
 function App() {
   const routes = (

@@ -5,7 +5,6 @@ import IdDisplay from "./components/IdDisplay";
 import logo10Dance from "../../common/assets/10dance_logo.svg";
 import logoHuji from "../../common/assets/huji_logo.png";
 import NumpadSubmit from "./components/NumpadSubmit";
-import { checkInAttendee } from "./api/check-in";
 import { validateId } from "./utils";
 import { Backdrop } from "../../common/components";
 import FullscreenMessage, {
@@ -16,15 +15,16 @@ import {
   faHeartCrack,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
+import { checkInAttendee, getAttendeeById } from "../../common/api/attendee";
 
 const CheckIn = () => {
+  const navigate = useNavigate();
+
   const [idNum, setIdNum] = useState<string>("");
   const [showBackdrop, setShowBackdrop] = useState(false);
   const [fullscreenMessage, setFullscreenMessage] =
     useState<null | IFullscreenMessage>(null);
-
-  const navigate = useNavigate();
 
   const numpadChangeHandler = ({ button }: { button: NumpadButton }) => {
     if (button === "CLEAR") {
@@ -55,12 +55,14 @@ const CheckIn = () => {
       const validId = await validateId(idNum);
       const res = await checkInAttendee(validId);
       if (!res.ok) throw new Error(res.statusText);
-      navigate("/print", { state: { id: idNum, postPrintURL: "/" } });
       setFullscreenMessage({
         title: "נרשמת בהצלחה",
         icon: faCheckToSlot,
         subtitle: "תג ועליו שמך נשלח להדפסה",
       });
+      setTimeout(() => {
+        sendToPrint();
+      }, 1100);
     } catch (e) {
       setFullscreenMessage({
         title: "אינך מופיע במערכת",
@@ -69,7 +71,17 @@ const CheckIn = () => {
       });
     }
   };
-
+  const sendToPrint = async () => {
+    const resJson = await getAttendeeById({ id: idNum });
+    const res = await resJson.json();
+    navigate("/print", {
+      state: {
+        name: res.first_name + " " + res.last_name,
+        institute: res.institute,
+        postPrintURL: "/",
+      },
+    });
+  };
   const closeBackdrop = () => {
     setIdNum("");
     setFullscreenMessage(null);

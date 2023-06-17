@@ -14,3 +14,9 @@ export async function deleteAttendeeById({ id }: { id: string }) {
     const res = await fetch(`${base_url}/attendee/${id}`, { method: 'DELETE' });
     return res;
 }
+
+export const checkInAttendee = async (id: string): Promise<Response> => {
+        const url = `${base_url}/attendee/check_in/${id}`;
+        const res = await fetch(url, { method: "POST" });
+        return res;
+}

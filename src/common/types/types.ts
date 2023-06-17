@@ -3,4 +3,5 @@ export interface Attendee {
     last_name: string,
     national_id: string,
     arrived: boolean,
+    institute: string
 }
