@@ -1,6 +1,7 @@
 import "./Admin.scss";
 import { Attendee } from "../../common/types/types";
 import Header from "./components/Header";
+import TableControl from "./components/Table/TableControl";
 import Table from "./components/Table/Table";
 import { useState, useCallback, useEffect } from "react";
 import { getAllAttendees } from "../../common/api/attendee";
@@ -36,7 +37,9 @@ function Admin() {
     initRows();
   }, []);
 
-  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleSearchTermChange: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
     if (!e.target.value) {
       setVisibleRows(allAttendees);
       return;
@@ -51,8 +54,13 @@ function Admin() {
         <Header />
       </div>
       <div className="flex-1 main width-container">
-        {/* table control - props: {visibleRows: attendee[]} onSearch, onAddedAtendee } */}
-        <input type="text" onChange={handleInputChange} />
+        {/* table control - missing prop: onAddedAtendee } */}
+        <div className="table-control-wrapper">
+          <TableControl
+            rows={visibleRows}
+            onSearchChange={handleSearchTermChange}
+          />
+        </div>
         {visibleRows.length > 0 && <Table rows={visibleRows} />}
       </div>
     </div>

@@ -3,12 +3,31 @@
     grid-template-columns: repeat(6, 1fr);
     align-items: center;
     padding: 8px 10px;
+    
     &:hover {
         background: #2A3D43;
         color: #FFFFFF;
+        .actions > * {
+            color: #76DFFF;
+            &:hover {
+                color: lighten(#76DFFF, 8)
+            }
+        }
     }
     .isArrived {
         padding-right: 14px;
         font-size: 22px;
+    }
+    .actions {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+
+        & > * {
+            cursor: pointer;
+            padding: 4px;
+            font-size: 22px;
+            
+        }
     }
 }
