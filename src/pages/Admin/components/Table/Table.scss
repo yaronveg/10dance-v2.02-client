@@ -1,6 +1,9 @@
 .table {
     display: flex;
     flex-direction: column;
+    border-radius: 4px;
+    overflow: hidden;
+    
     .rows {
         color: #2A3D43;
         background: #E1EEF8;
