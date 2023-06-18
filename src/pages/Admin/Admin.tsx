@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Table from "./components/Table/Table";
 import { useState, useCallback, useEffect } from "react";
 import { getAllAttendees } from "../../common/api/attendee";
+import Fuse from "fuse.js";
 
 function Admin() {
   const [allAttendees, setAllAttendees] = useState<Attendee[]>([]);
@@ -12,30 +13,29 @@ function Admin() {
 
   const getRows = useCallback(async () => {
     const resJson = await getAllAttendees();
-    const res = await resJson.json();
-    setAllAttendees(res);
+    return await resJson.json();
   }, []);
 
   const searchRows = useCallback(
     (rows: Attendee[]) => {
-      return rows.filter(
-        (row) =>
-          row.first_name.includes(searchTerm) ||
-          row.last_name.includes(searchTerm) ||
-          row.national_id.includes(searchTerm) ||
-          row.institute.includes(searchTerm)
-      );
+      const fuse = new Fuse(rows, {
+        keys: ["first_name", "last_name", "national_id", "institute"],
+      });
+      const results = fuse.search(searchTerm);
+      return results.map((match) => ({ ...match.item }));
     },
     [searchTerm]
   );
 
   useEffect(() => {
     const initRows = async () => {
-      await getRows();
-      setVisibleRows(allAttendees);
+      const rows = await getRows();
+      setAllAttendees(rows);
+      setVisibleRows(rows);
     };
     initRows();
   }, []);
+
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     if (!e.target.value) {
       setVisibleRows(allAttendees);
@@ -44,6 +44,7 @@ function Admin() {
     setSearchTerm(e.target.value);
     setVisibleRows(searchRows(allAttendees));
   };
+
   return (
     <div className="admin-wrapper">
       <div className="flex-none">
@@ -52,7 +53,7 @@ function Admin() {
       <div className="flex-1 main width-container">
         {/* table control - props: {visibleRows: attendee[]} onSearch, onAddedAtendee } */}
         <input type="text" onChange={handleInputChange} />
-        <Table rows={visibleRows} />
+        {visibleRows.length > 0 && <Table rows={visibleRows} />}
       </div>
     </div>
   );

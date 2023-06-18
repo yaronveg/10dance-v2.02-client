@@ -4,8 +4,6 @@ import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 
 const Table = ({ rows }: { rows: Attendee[] }) => {
-  console.log({ rows });
-
   return (
     <div className="table">
       <TableHeader />
