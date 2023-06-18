@@ -8,8 +8,11 @@ const Table = ({ rows }: { rows: Attendee[] }) => {
     <div className="table">
       <TableHeader />
       <div className="rows">
-        {rows.map((row) => (
-          <TableRow key={row.national_id} row={row} />
+        {rows.map((row, i) => (
+          <div key={row.national_id}>
+            <TableRow row={row} />
+            {i < rows.length - 1 && <div className="separator"></div>}
+          </div>
         ))}
       </div>
     </div>
