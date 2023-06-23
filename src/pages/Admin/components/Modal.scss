@@ -46,6 +46,9 @@
             & > * {
                 border-radius: 4px;
                 cursor: pointer;
+                &:active {
+                    transform: scale(0.95);
+                }
             }
             &__cancel {
                 padding: 0 16px;
