@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import "./Print.scss";
+import "./PrintNametag.scss";
 import { useEffect } from "react";
 import NametagBottom from "./assets/logo_agi_nametag.png";
-const PrintPage = () => {
+const PrintNametag = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -28,4 +28,4 @@ const PrintPage = () => {
   );
 };
 
-export default PrintPage;
+export default PrintNametag;

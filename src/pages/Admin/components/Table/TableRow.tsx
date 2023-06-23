@@ -26,7 +26,7 @@ const TableRow = ({ row }: { row: Attendee }) => {
   }, []);
 
   const printAttendeeTag = () => {
-    navigate("/print", {
+    navigate("/print-nametag", {
       state: {
         name: row.first_name + " " + row.last_name,
         institute: row.institute,

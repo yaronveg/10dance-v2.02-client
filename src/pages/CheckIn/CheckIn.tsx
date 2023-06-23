@@ -74,7 +74,7 @@ const CheckIn = () => {
   const sendToPrint = async () => {
     const resJson = await getAttendeeById({ id: idNum });
     const res = await resJson.json();
-    navigate("/print", {
+    navigate("/print-nametag", {
       state: {
         name: res.first_name + " " + res.last_name,
         institute: res.institute,
