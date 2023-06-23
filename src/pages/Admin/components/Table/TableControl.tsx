@@ -1,9 +1,11 @@
 import "./TableControl.scss";
 import { Attendee } from "../../../../common/types/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPrint, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faPrint, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import TableControlBtn from "./TableControlBtn";
+import { useState } from "react";
+import AddAttendeeModal from "../Modals/AddAttendeeModal";
 
 const TableControl = ({
   rows,
@@ -13,6 +15,7 @@ const TableControl = ({
   onSearchChange: React.ChangeEventHandler<HTMLInputElement>;
 }) => {
   const navigate = useNavigate();
+  const [showAddAttendeeModal, setShowAddAttendeeModal] = useState(false);
 
   const printRows = () => {
     navigate("/admin/print-table", {
@@ -36,8 +39,15 @@ const TableControl = ({
             <FontAwesomeIcon icon={faSearch} />
           </div>
         </div>
+        <TableControlBtn
+          icon={faPlus}
+          onClick={() => setShowAddAttendeeModal(true)}
+        />
         <TableControlBtn icon={faPrint} onClick={printRows} />
       </div>
+      {showAddAttendeeModal && (
+        <AddAttendeeModal onClose={() => setShowAddAttendeeModal(false)} />
+      )}
     </div>
   );
 };
