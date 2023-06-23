@@ -12,6 +12,9 @@
             &:hover {
                 color: lighten(#76DFFF, 8)
             }
+            &:active {
+                transform: scale(0.90);
+            }
         }
     }
     .isArrived {

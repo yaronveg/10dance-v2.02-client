@@ -14,6 +14,7 @@ import Modal from "../Modal";
 const TableRow = ({ row }: { row: Attendee }) => {
   const navigate = useNavigate();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showPrintModal, setShowPrintModal] = useState(false);
 
   const deleteAttendee = useCallback(() => {
     deleteAttendeeById({ id: row.national_id });
@@ -23,6 +24,7 @@ const TableRow = ({ row }: { row: Attendee }) => {
     deleteAttendee();
     setShowDeleteModal(false);
   }, []);
+
   const printAttendeeTag = () => {
     navigate("/print", {
       state: {
@@ -32,6 +34,11 @@ const TableRow = ({ row }: { row: Attendee }) => {
       },
     });
   };
+
+  const modalPrintHandler = useCallback(() => {
+    printAttendeeTag();
+    setShowDeleteModal(false);
+  }, []);
 
   return (
     <div className="table-row">
@@ -43,7 +50,10 @@ const TableRow = ({ row }: { row: Attendee }) => {
         {row.arrived && <FontAwesomeIcon icon={faCircleCheck} />}
       </div>
       <div className="actions">
-        <FontAwesomeIcon icon={faPrint} onClick={printAttendeeTag} />
+        <FontAwesomeIcon
+          icon={faPrint}
+          onClick={() => setShowPrintModal(true)}
+        />
         <FontAwesomeIcon
           icon={faTrash}
           onClick={() => setShowDeleteModal(true)}
@@ -64,6 +74,22 @@ const TableRow = ({ row }: { row: Attendee }) => {
             </div>
           }
           submitLabel="מחיקה"
+        />
+      )}
+
+      {showPrintModal && (
+        <Modal
+          onClose={() => setShowPrintModal(false)}
+          onSubmit={modalPrintHandler}
+          header={<div>הדפסת שורה</div>}
+          content={
+            <div>
+              <div>
+                האם להדפיס תג-שם עבור "{row.first_name} {row.last_name}"?
+              </div>
+            </div>
+          }
+          submitLabel="הדפס"
         />
       )}
     </div>
