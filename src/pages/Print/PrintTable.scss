@@ -1,29 +1,49 @@
-section.print-page {
-    @font-face {
-      src: url("../fonts/Huji-Bold.otf");
-      font-family: Huji-Bold;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Huji-Bold;
-      /* font-family: Arial, Helvetica, sans-serif; */
-    }
-    
-    .table-print-page {
-      direction: rtl;
-      table {
-        margin: 0 auto;
+.table-print-page {
+  direction: rtl;
+  width: 720px;
+
+  @font-face {
+    src: url("../fonts/Huji-Bold.otf") format(otf);
+    font-family: Huji-Bold;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+    box-sizing: border-box;
+    font-family: Huji-Bold;
+  }
+  
+  table {
+    margin: 50px auto;
+    font-size: 16px;
+    border: 1px solid #a5a5a5;
+    tr {
+      th {
+        padding: 10px 30px;
+        background: #25282e;
+        color: #fff;
+      }
+      td {
+          padding: 6px 30px;
+      }
+      &:not(:last-child) {
         td {
-            padding: 4px 8px;
+          border: solid #a5a5a5;
+          border-width: 0 0 1px;
+        }
+      }
+      &:nth-of-type(even) {
+        td {
+          background: #e7e7e7;
         }
       }
     }
-    
-    @page {
-      size: 210mm 297mm;
-      margin: 0mm;
-    }
-    }
+  }
+}
+
+@page {
+  size: 210mm 297mm;
+  margin: 50px auto;
+}    

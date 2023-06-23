@@ -55,13 +55,17 @@ function Admin() {
       </div>
       <div className="flex-1 main width-container">
         {/* table control - missing prop: onAddedAtendee } */}
-        <div className="table-control-wrapper">
+        <div className="flex-none table-control-wrapper">
           <TableControl
             rows={visibleRows}
             onSearchChange={handleSearchTermChange}
           />
         </div>
-        {visibleRows.length > 0 && <Table rows={visibleRows} />}
+        {visibleRows.length > 0 && (
+          <div className="flex-1">
+            <Table rows={visibleRows} />
+          </div>
+        )}
       </div>
     </div>
   );

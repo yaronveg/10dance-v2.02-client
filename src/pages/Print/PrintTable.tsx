@@ -1,22 +1,20 @@
 import "./PrintTable.scss";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Attendee } from "../../common/types/types";
 
 const PrintTable = () => {
   const location = useLocation();
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("mounted", { state: location.state });
     window.onafterprint = () => {
-      //   navigate(location.state.postPrintURL);
+      navigate(location.state.postPrintURL);
     };
-
-    // setTimeout(() => {
-    //   window.print();
-    // }, 200);
+    setTimeout(() => {
+      window.print();
+    }, 1000);
   }, []);
 
   return (
