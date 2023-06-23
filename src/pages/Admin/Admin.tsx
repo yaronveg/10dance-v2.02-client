@@ -50,7 +50,7 @@ function Admin() {
 
   return (
     <div className="admin-wrapper">
-      <div className="flex-none">
+      <div className="flex-none admin-header">
         <Header />
       </div>
       <div className="flex-1 main width-container">

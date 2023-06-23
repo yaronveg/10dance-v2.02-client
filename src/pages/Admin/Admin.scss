@@ -4,13 +4,22 @@
     color: #ffffff;
     display: flex;
     flex-direction: column;
+    .admin-header  {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
     .flex-none {
       flex: 0;
     }
     .flex-1 {
       flex: 1;
       .table-control-wrapper {
-        margin-bottom: 12px;
+        padding: 12px 0;
+        // margin-bottom: 12px;
+        position: sticky;
+        top: 80px;
+        background: #2a3d43;
       }
     }
     .width-container {
