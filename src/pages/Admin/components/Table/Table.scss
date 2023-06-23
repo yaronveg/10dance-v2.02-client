@@ -2,11 +2,10 @@
     display: flex;
     flex-direction: column;
     border-radius: 4px;
-    height: 100%;
+    overflow: hidden;
+    margin-bottom: 80px;
     
     .rows {
-        height: 100%;
-        overflow: scroll;
         color: #2A3D43;
         background: #E1EEF8;
         padding: 6px 10px;
