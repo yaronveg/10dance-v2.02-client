@@ -54,7 +54,7 @@ function Admin() {
         <Header />
       </div>
       <div className="flex-1 main width-container">
-        {/* table control - missing prop: onAddedAtendee } */}
+        {/* table control - missing prop: onAddedAttendee } */}
         <div className="flex-none table-control-wrapper">
           <TableControl
             rows={visibleRows}
