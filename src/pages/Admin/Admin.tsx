@@ -6,13 +6,11 @@ import Table from "./components/Table/Table";
 import { useState, useCallback, useEffect } from "react";
 import { getAllAttendees } from "../../common/api/attendee";
 import Fuse from "fuse.js";
-import Modal from "./components/Modal";
 
 function Admin() {
   const [allAttendees, setAllAttendees] = useState<Attendee[]>([]);
   const [visibleRows, setVisibleRows] = useState<Attendee[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [showModal, setShowModal] = useState(true);
 
   const getRows = useCallback(async () => {
     const resJson = await getAllAttendees();
@@ -53,14 +51,6 @@ function Admin() {
   return (
     <div className="admin-wrapper">
       <div className="flex-none">
-        {showModal && (
-          <Modal
-            onClose={() => setShowModal(false)}
-            header={<span>כותרת</span>}
-            content={<div>תוכן ראשי</div>}
-            submitLabel="מחיקה"
-          />
-        )}
         <Header />
       </div>
       <div className="flex-1 main width-container">
