@@ -5,14 +5,15 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { CheckIn, Admin, PrintNametag } from "./pages";
+import { CheckIn, Admin, PrintNametag, PrintTable } from "./pages";
 
 function App() {
   const routes = (
     <>
       <Route path="/" element={<CheckIn />} />
-      <Route path="/admin" element={<Admin />} />
       <Route path="/print-nametag" element={<PrintNametag />} />
+      <Route path="/admin/print-table" element={<PrintTable />} />
+      <Route path="/admin" element={<Admin />} />
       <Route path="*" element={<Navigate replace to="/" />} />
     </>
   );
