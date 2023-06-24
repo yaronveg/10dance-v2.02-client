@@ -2,6 +2,11 @@
     padding: 16px;
     padding-bottom: 20px;
 }
+.form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 .form-icon {
     color: #20718B;
     font-size: 22px;
@@ -15,4 +20,17 @@
     &-inactive {
         opacity: 50%;
     }
+}
+.form-field {
+    background: #fff;
+    border-radius: 4px;
+    border: 0;
+    padding: 4px 12px;
+    font-size: 16px;
+    
+}
+.form-toggles {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
 }
