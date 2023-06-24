@@ -1,4 +1,4 @@
-import "./AddAttendeeModal.scss";
+import "../../../../../common/scss/modal-forms.scss";
 import { addAttendee } from "../../../../../common/api/attendee";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "../Modal";
@@ -41,7 +41,7 @@ const AddAttendeeModal = ({ onClose }: { onClose: () => void }) => {
       contentPadding={false}
       content={
         <form onSubmit={handleSubmit(handleAddAttendee)}>
-          <div className="add-attendee-form-padding">
+          <div className="add-attendee-form form-padding">
             <input
               {...register("firstName")}
               type="text"
