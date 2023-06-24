@@ -23,7 +23,6 @@ const Header = () => {
           <img src={logo10Dance} width="160px" alt="" />
         </div>
       </div>
-      const [showAboutModal, setShowAboutModal] = useState(false)
       {showAboutModal && (
         <Modal
           onClose={() => setShowAboutModal(false)}

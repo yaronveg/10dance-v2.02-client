@@ -14,7 +14,7 @@ const PrintTable = () => {
     };
     setTimeout(() => {
       window.print();
-    }, 1000);
+    }, 500);
   }, []);
 
   return (
