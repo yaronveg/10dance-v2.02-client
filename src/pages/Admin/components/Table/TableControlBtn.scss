@@ -13,4 +13,7 @@
     &:hover {
         background-color: lighten(#CEFA72, 8)
     }
+    &:active {
+        transform: scale(0.95);
+    }
 }
