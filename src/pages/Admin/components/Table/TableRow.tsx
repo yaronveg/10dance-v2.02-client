@@ -3,16 +3,19 @@ import { Attendee } from "../../../../common/types/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleCheck,
+  faPencil,
   faPrint,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import DeleteAttendeeModal from "../Modal/Modals/DeleteAttendeeModal";
 import PrintAttendeeNametagModal from "../Modal/Modals/PrintAttendeeNametagModal";
+import EditAttendeeModal from "../Modal/Modals/EditAttendeeModal";
 
 const TableRow = ({ row }: { row: Attendee }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showPrintModal, setShowPrintModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   return (
     <div className="table-row">
@@ -29,6 +32,10 @@ const TableRow = ({ row }: { row: Attendee }) => {
           onClick={() => setShowPrintModal(true)}
         />
         <FontAwesomeIcon
+          icon={faPencil}
+          onClick={() => setShowEditModal(true)}
+        />
+        <FontAwesomeIcon
           icon={faTrash}
           onClick={() => setShowDeleteModal(true)}
         />
@@ -39,6 +46,10 @@ const TableRow = ({ row }: { row: Attendee }) => {
           row={row}
           onClose={() => setShowDeleteModal(false)}
         />
+      )}
+
+      {showEditModal && (
+        <EditAttendeeModal row={row} onClose={() => setShowEditModal(false)} />
       )}
 
       {showPrintModal && (

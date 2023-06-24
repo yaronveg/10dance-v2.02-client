@@ -1,3 +1,4 @@
+import { Attendee } from './../types/types';
 const base_url = import.meta.env.VITE_BASE_URL;
 
 export async function getAttendeeById({ id }: { id: string }) {
@@ -22,10 +23,14 @@ export const checkInAttendee = async (id: string): Promise<Response> => {
 }
 
 export const addAttendee = async ({first_name, last_name, national_id, institute, arrived = false}: {first_name: string; last_name: string; national_id: string; institute: string; arrived?:boolean; }): Promise<Response> => {
-
     const body = JSON.stringify({first_name, last_name, national_id, institute, arrived});
-
-        const url = `${base_url}/attendee/add`;
-        const res = await fetch(url, { method: "POST", body, headers: {"content-type": "application/json"} });
-        return res;
+    const url = `${base_url}/attendee/add`;
+    const res = await fetch(url, { method: "POST", body, headers: {"content-type": "application/json"} });
+    return res;
+}
+export const editAttendee = async ({national_id, attendee}: {national_id: string; attendee: Attendee }): Promise<Response> => {
+    const body = JSON.stringify(attendee);
+    const url = `${base_url}/attendee/${national_id}`;
+    const res = await fetch(url, { method: "PUT", body, headers: {"content-type": "application/json"} });
+    return res;
 }

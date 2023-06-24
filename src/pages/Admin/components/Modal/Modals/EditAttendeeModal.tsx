@@ -1,5 +1,6 @@
 import "../../../../../common/scss/modal-forms.scss";
-import { addAttendee } from "../../../../../common/api/attendee";
+import { editAttendee } from "../../../../../common/api/attendee";
+import { Attendee } from "../../../../../common/types/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "../Modal";
 import ModalActions from "../ModalActions";
@@ -16,23 +17,38 @@ type FormData = {
   arrived: boolean;
 };
 
-const AddAttendeeModal = ({ onClose }: { onClose: () => void }) => {
+const EditAttendeeModal = ({
+  onClose,
+  row,
+}: {
+  onClose: () => void;
+  row: Attendee;
+}) => {
   const navigate = useNavigate();
 
   const { register, handleSubmit, setValue } = useForm<FormData>({
-    defaultValues: { arrived: false },
+    defaultValues: {
+      firstName: row.first_name,
+      lastName: row.last_name,
+      nationalId: row.national_id,
+      institute: row.institute,
+      arrived: row.arrived,
+    },
   });
 
   const [isArrived, setIsArrived] = useState(false);
   const [shouldPrint, setShouldPrint] = useState(true);
 
-  const handleAddAttendee = (formData: FormData) => {
-    addAttendee({
-      first_name: formData.firstName,
-      last_name: formData.lastName,
-      national_id: formData.nationalId,
-      institute: formData.institute ?? "",
-      arrived: formData.arrived,
+  const handleEditAttendee = (formData: FormData) => {
+    editAttendee({
+      national_id: row.national_id,
+      attendee: {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        national_id: formData.nationalId,
+        institute: formData.institute ?? "",
+        arrived: formData.arrived,
+      },
     });
 
     onClose();
@@ -52,11 +68,11 @@ const AddAttendeeModal = ({ onClose }: { onClose: () => void }) => {
     <Modal
       showDefaultActions={false}
       onClose={onClose}
-      header={<div>הוספת שורה</div>}
+      header={<div>עריכת שורה</div>}
       contentPadding={false}
       content={
-        <form onSubmit={handleSubmit(handleAddAttendee)}>
-          <div className="add-attendee-form form-column form-padding">
+        <form onSubmit={handleSubmit(handleEditAttendee)}>
+          <div className="edit-attendee-form form-column form-padding">
             <input
               {...register("firstName")}
               className="form-field"
@@ -117,11 +133,11 @@ const AddAttendeeModal = ({ onClose }: { onClose: () => void }) => {
               />
             </div>
           </div>
-          <ModalActions submitLabel="הוספה" onClose={onClose} />
+          <ModalActions submitLabel="שמירה" onClose={onClose} />
         </form>
       }
     />
   );
 };
 
-export default AddAttendeeModal;
+export default EditAttendeeModal;
