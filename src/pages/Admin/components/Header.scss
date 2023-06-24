@@ -45,3 +45,27 @@
         }
     }
 }
+.about-text {
+    margin-bottom: 16px;
+}
+.snap-left {
+    display: flex;
+    justify-content: end;
+    .about-close-btn {
+        padding: 4px 10px;
+        border: 0;
+        outline: 0;
+    
+        background: 0;
+        border-radius: 4px;
+    
+        color: #20718B;
+        font-size: 16px;
+        font-weight: bold;
+    
+        cursor: pointer;
+        &:hover {
+            background: rgba($color: #fff, $alpha: 0.6)
+        }
+    }
+}
