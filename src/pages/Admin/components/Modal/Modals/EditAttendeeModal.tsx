@@ -36,7 +36,7 @@ const EditAttendeeModal = ({
     },
   });
 
-  const [isArrived, setIsArrived] = useState(false);
+  const [isArrived, setIsArrived] = useState(row.arrived);
   const [shouldPrint, setShouldPrint] = useState(true);
 
   const handleEditAttendee = (formData: FormData) => {
