@@ -19,10 +19,10 @@ const TableRow = ({ row }: { row: Attendee }) => {
 
   return (
     <div className="table-row">
-      <div>{row.last_name}</div>
-      <div>{row.first_name}</div>
-      <div>{row.national_id}</div>
-      <div>{row.institute}</div>
+      <div className="text-cell">{row.last_name}</div>
+      <div className="text-cell">{row.first_name}</div>
+      <div className="text-cell">{row.national_id}</div>
+      <div className="text-cell">{row.institute}</div>
       <div className="isArrived">
         {row.arrived && <FontAwesomeIcon icon={faCircleCheck} />}
       </div>
