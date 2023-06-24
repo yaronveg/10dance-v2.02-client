@@ -1,6 +1,6 @@
 import Modal from "../Modal";
 import { useNavigate } from "react-router-dom";
-import { Attendee } from "../../../../common/types/types";
+import { Attendee } from "../../../../../common/types/types";
 import { useCallback } from "react";
 
 const PrintAttendeeNametagModal = ({

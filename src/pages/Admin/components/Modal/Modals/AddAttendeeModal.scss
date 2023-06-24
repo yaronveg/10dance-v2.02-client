@@ -1,0 +1,20 @@
+.add-attendee {
+    &-form-padding {
+        padding: 16px;
+        padding-bottom: 20px;
+    }
+}
+.form-icon {
+    color: #20718B;
+    font-size: 22px;
+    cursor: pointer;
+    &:hover {
+        color: lighten(#20718B, 5)
+    }
+    &:active {
+        transform: scale(0.95);
+    }
+    &-inactive {
+        opacity: 50%;
+    }
+}

@@ -1,0 +1,15 @@
+.modal-actions-wrapper {
+    display: flex;
+        width: 100%;
+        justify-content: end;;
+        padding-bottom: 16px;
+        .modal-actions {
+            display: flex;
+            gap: 8px;
+            border-radius: 0 4px 4px 0;
+
+            background: #2A3D43;
+            padding: 5px 16px;
+            text-align: center;
+        }
+}

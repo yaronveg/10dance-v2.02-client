@@ -1,6 +1,6 @@
 import Modal from "../Modal";
-import { Attendee } from "../../../../common/types/types";
-import { deleteAttendeeById } from "../../../../common/api/attendee";
+import { Attendee } from "../../../../../common/types/types";
+import { deleteAttendeeById } from "../../../../../common/api/attendee";
 import { useCallback } from "react";
 
 const DeleteAttendeeModal = ({

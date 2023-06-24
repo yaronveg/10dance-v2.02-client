@@ -1,0 +1,31 @@
+.modal-action {
+    border-radius: 4px;
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    font-size: 1rem;
+
+    &:active {
+        transform: scale(0.95);
+    }
+    
+    &__cancel {
+        padding: 0 16px;
+        color: #fff;
+        background: none;
+        font-weight: 500;
+        line-height: 1.5rem;
+        &:hover {
+            background: rgba($color: #fff, $alpha: 0.1)
+        }
+    }
+    &__submit {
+        width: 105px;
+        background: #CEFA72;
+        color: #20718B;
+        font-weight: 700;
+        &:hover {
+        background: lighten(#CEFA72, 6);
+        }
+    }
+}

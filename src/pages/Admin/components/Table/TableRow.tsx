@@ -7,8 +7,8 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import DeleteAttendeeModal from "../Modals/DeleteAttendeeModal";
-import PrintAttendeeNametagModal from "../Modals/PrintAttendeeNametagModal";
+import DeleteAttendeeModal from "../Modal/Modals/DeleteAttendeeModal";
+import PrintAttendeeNametagModal from "../Modal/Modals/PrintAttendeeNametagModal";
 
 const TableRow = ({ row }: { row: Attendee }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);

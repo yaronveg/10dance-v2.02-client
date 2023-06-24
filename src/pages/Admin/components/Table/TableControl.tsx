@@ -5,7 +5,7 @@ import { faPlus, faPrint, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import TableControlBtn from "./TableControlBtn";
 import { useState } from "react";
-import AddAttendeeModal from "../Modals/AddAttendeeModal";
+import AddAttendeeModal from "../Modal/Modals/AddAttendeeModal";
 
 const TableControl = ({
   rows,
