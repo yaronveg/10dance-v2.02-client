@@ -30,6 +30,9 @@
                 border-radius: 4px;
                 min-width: 105px;
                 height: 26px;
+                &:hover {
+                background: #f3fbff;
+                }
                 &:active {
                     scale: 0.98;
                 }
