@@ -1,0 +1,21 @@
+.radio-option {
+    cursor: pointer;
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    color: #09536A;
+
+    .radio-button {
+        background: #CEFA72;
+        box-shadow: -2px 0 4px rgba($color: #20718b, $alpha: 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        z-index: 1;
+    }
+    .radio-label {
+        background: #fff;
+        padding: 8px 12px;
+    }
+}

@@ -1,6 +1,7 @@
 .table-control {
     display: flex;
     flex-direction: row-reverse;
+    justify-content: space-between;
 
     color: #09536A;
     .left {
@@ -40,5 +41,10 @@
                 background: #CEFA72;
             }
         }
+    }
+    .right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
     }
 }

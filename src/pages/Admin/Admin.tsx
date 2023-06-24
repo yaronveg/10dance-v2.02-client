@@ -3,14 +3,23 @@ import { Attendee } from "../../common/types/types";
 import Header from "./components/Header";
 import TableControl from "./components/Table/TableControl";
 import Table from "./components/Table/Table";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { getAllAttendees } from "../../common/api/attendee";
 import Fuse from "fuse.js";
+
+const visibleToggleMap: Record<string, (row: Attendee) => boolean> = {
+  all: (row: Attendee) => !!row,
+  arrived: (row: Attendee) => row.arrived,
+  not_arrived: (row: Attendee) => !row.arrived,
+};
 
 function Admin() {
   const [allAttendees, setAllAttendees] = useState<Attendee[]>([]);
   const [visibleRows, setVisibleRows] = useState<Attendee[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const searchTerm = useRef("");
+  // const [searchTerm, setSearchTerm] = useState("");
+  const toggleVisible = useRef("all");
+  // const [toggleVisible, setToggleVisible] = useState("all");
 
   const getRows = useCallback(async () => {
     const resJson = await getAllAttendees();
@@ -22,7 +31,7 @@ function Admin() {
       const fuse = new Fuse(rows, {
         keys: ["first_name", "last_name", "national_id", "institute"],
       });
-      const results = fuse.search(searchTerm);
+      const results = fuse.search(searchTerm.current);
       return results.map((match) => ({ ...match.item }));
     },
     [searchTerm]
@@ -40,12 +49,30 @@ function Admin() {
   const handleSearchTermChange: React.ChangeEventHandler<HTMLInputElement> = (
     e
   ) => {
-    if (!e.target.value) {
+    searchTerm.current = e.target.value;
+    updateVisibleRows();
+  };
+
+  const handleToggleChange = (value: string) => {
+    toggleVisible.current = value;
+    updateVisibleRows();
+  };
+
+  const updateVisibleRows = () => {
+    if (!searchTerm.current && toggleVisible.current === "all") {
       setVisibleRows(allAttendees);
       return;
     }
-    setSearchTerm(e.target.value);
-    setVisibleRows(searchRows(allAttendees));
+
+    !searchTerm.current
+      ? setVisibleRows(
+          allAttendees.filter(visibleToggleMap[toggleVisible.current])
+        )
+      : setVisibleRows(
+          searchRows(
+            allAttendees.filter(visibleToggleMap[toggleVisible.current])
+          )
+        );
   };
 
   return (
@@ -59,6 +86,7 @@ function Admin() {
           <TableControl
             rows={visibleRows}
             onSearchChange={handleSearchTermChange}
+            onToggleChange={handleToggleChange}
           />
         </div>
         {visibleRows.length > 0 && (

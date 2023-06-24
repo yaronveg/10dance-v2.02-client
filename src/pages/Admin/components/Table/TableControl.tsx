@@ -6,13 +6,16 @@ import { useNavigate } from "react-router-dom";
 import TableControlBtn from "./TableControlBtn";
 import { useState } from "react";
 import AddAttendeeModal from "../Modal/Modals/AddAttendeeModal";
+import RadioGroup from "../Radio/RadioGroup";
 
 const TableControl = ({
   rows,
   onSearchChange,
+  onToggleChange,
 }: {
   rows: Attendee[];
   onSearchChange: React.ChangeEventHandler<HTMLInputElement>;
+  onToggleChange: (value: string) => void;
 }) => {
   const navigate = useNavigate();
   const [showAddAttendeeModal, setShowAddAttendeeModal] = useState(false);
@@ -25,6 +28,12 @@ const TableControl = ({
       },
     });
   };
+
+  const visibleToggleOptions: { value: string; label: string }[] = [
+    { value: "all", label: "כולם" },
+    { value: "arrived", label: "נוכחים" },
+    { value: "not_arrived", label: "לא נוכחים" },
+  ];
 
   return (
     <div className="table-control">
@@ -45,6 +54,11 @@ const TableControl = ({
         />
         <TableControlBtn icon={faPrint} onClick={printRows} />
       </div>
+
+      <div className="right">
+        <RadioGroup options={visibleToggleOptions} onChange={onToggleChange} />
+      </div>
+
       {showAddAttendeeModal && (
         <AddAttendeeModal onClose={() => setShowAddAttendeeModal(false)} />
       )}
